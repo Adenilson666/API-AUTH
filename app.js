@@ -2,7 +2,7 @@ const express = require('express');
 
 const app = express();
 
-const router = require('./routes/userRouter');
+const router = require('./routes/rotas');
 
 app.use(express.json());
 
