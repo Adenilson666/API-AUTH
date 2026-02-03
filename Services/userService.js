@@ -19,12 +19,12 @@ const createUser = async ({name, email, password}) => {
         throw err;
     }
 
-    const passwordHash = await bcrypt.hash(password, 10);
+    const password_hash = await bcrypt.hash(password, 10);
 
     const user = await User.create({
         name: name.trim(),
         email: normalizedEmail,
-        password: passwordHash
+        password_hash
     });
 
     return{
