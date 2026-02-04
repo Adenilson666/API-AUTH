@@ -1,11 +1,11 @@
 const bcrypt = require('bcrypt');
 const {User} = require('../models');
+const AppError = require('../error/appError');
 
 const loginUser = async ({email, password}) => {
-    if (!email?.trim() || !password) {
-        const err = new Error('Email and password are required to login.');
-        err.statusCode = 400;
-        throw err;
+    
+    if (!email|| !password) {
+        throw new AppError('Email e senha são obrigatórios.', 400);
     }
 
     const normalizedEmail = email.trim().toLowerCase();
@@ -13,17 +13,13 @@ const loginUser = async ({email, password}) => {
     const user = await User.findOne({ where: { email: normalizedEmail } });
 
     if (!user) {
-        const err = new Error('Invalid email or password.');
-        err.statusCode = 401;
-        throw err;
+        throw new AppError('Email ou senha inválidos.', 401);
     }
 
     const isPasswordValid = await bcrypt.compare(password, user.password_hash);
 
     if (!isPasswordValid) {
-        const err = new Error('Invalid email or password.');
-        err.statusCode = 401;
-        throw err;
+        throw new AppError('Email ou senha inválidos.', 401);
     }   
 
     return {
