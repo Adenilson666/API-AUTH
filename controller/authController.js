@@ -20,7 +20,31 @@ const getMe = async (req, res, next) => {
     }
 };
 
+const updateMe = async (req, res, next) => {
+    try {
+        const result = await authService.updateMe(req.user.id, req.body);
+        res.status(200).json(result);
+    } catch (error) {
+        next(error);
+    }
+};
+
+const changeMyPassword = async (req, res, next) => {
+    try {
+        // Implementation for changing password goes here
+        const { currentPassword, newPassword } = req.body;
+
+        await authService.changeMyPassword(req.user.id, {currentPassword, newPassword});
+
+        return res.status(204).send();
+    } catch (error) {
+        next(error);
+    }
+};
+
 module.exports = {
     loginUser,
     getMe,
+    updateMe,
+    changeMyPassword
 };
