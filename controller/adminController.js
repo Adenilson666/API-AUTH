@@ -38,7 +38,7 @@ const updateUserPassword = async (req, res, next) => {
     try {
         const { id } = req.params;
 
-        const { newPassword } = req.body.newPassword || req.body.new_password;
+        const newPassword = req.body.newPassword || req.body.new_password;
 
         await adminService.updateUserPassword(id, {newPassword});
 

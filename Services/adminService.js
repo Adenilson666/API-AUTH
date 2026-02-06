@@ -1,5 +1,6 @@
 const { User } = require('../models');
 const AppError = require('../error/appError');
+const bcrypt = require('bcrypt');
 
 const listUsers = async ({page = 1, limit = 10}) => {
 
@@ -73,7 +74,7 @@ const updateUser = async (id, data) => {
         }
 
         user.name = data.name.trim();
-    }
+    }   
    
     await user.save();
 

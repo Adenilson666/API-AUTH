@@ -32,7 +32,7 @@ router.patch('/admin/users/:id', ensureAuthMiddleware, ensureAdminMiddleware, ad
 
 router.patch('/admin/users/:id/role', ensureAuthMiddleware, ensureAdminMiddleware, adminController.updateUserRole);
 
-//router.patch('/admin/users/:id/password',ensureAuthMiddleware,ensureAdminMiddleware,adminController.updateUserPassword);
+router.patch('/admin/users/:id/password',ensureAuthMiddleware,ensureAdminMiddleware,adminController.updateUserPassword);
 
 router.delete('/admin/users/:id', ensureAuthMiddleware, ensureAdminMiddleware, adminController.deleteUser);
 
