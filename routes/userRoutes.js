@@ -12,9 +12,11 @@ const authMiddleware = require('../middlewares/authMiddleware');
 
 const ensureAuthMiddleware = require('../middlewares/ensureAuthMiddleware');
 
-router.post('/register', registerMiddleware, registerController.registerUser);
+const rateLimit = require('../middlewares/rateLimit');
 
-router.post('/login', authMiddleware, authController.loginUser);
+router.post('/register', rateLimit, registerMiddleware, registerController.registerUser);
+
+router.post('/login', rateLimit, authMiddleware, authController.loginUser);
 
 router.get('/auth/me', ensureAuthMiddleware, authController.getMe);
 
