@@ -1,34 +1,40 @@
 const AppError = require('../error/appError');
 
-const loginMiddleware = (err, req, res, next) => {
+const loginMiddleware = (req, res, next) => {
+  let { email, password } = req.body;
 
-    let { email, password } = req.body;
+  // 1) presença
+  if (email == null || password == null) {
+    throw new AppError('E-mail e senha são obrigatórios.', 400);
+  }
 
-    if (email === null || password === null) {
-        throw new AppError('E-mail e senha são obrigatórios.', 400);
-    }
+  // 2) tipo
+  if (typeof email !== 'string' || typeof password !== 'string') {
+    throw new AppError('E-mail e senha inválidos.', 400);
+  }
 
-    if (typeof email !== 'string' || typeof password !== 'string') {
-        throw new AppError('E-mail e senha inválidos.', 400);
-    }
+  // 3) normalização
+  email = email.trim().toLowerCase();
+  password = password.trim();
 
-    email = email.trim().toLowerCase();
+  // 4) vazio
+  if (!email || !password) {
+    throw new AppError('E-mail e senha são obrigatórios.', 400);
+  }
 
-    if (!email || !password) {
-        throw new AppError('E-mail e senha são obrigatórios.', 400);
-    }
+  // 5) formato básico e limites
+  const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  const passOk = password.length >= 8 && password.length <= 72;
 
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        throw new AppError('Email e senha inválidos.', 400);
-    }
+  if (!emailOk || !passOk) {
+    throw new AppError('E-mail e senha inválidos.', 400);
+  }
 
-    if (password.length < 8 || password.length > 72) {
-        throw new AppError('Email e senha inválidos.', 400);
-    }
+  // ✅ devolve normalizado pro resto do fluxo
+  req.body.email = email;
+  req.body.password = password;
 
-    req.body.email = email;
-
-    next();
+  return next();
 };
 
 module.exports = loginMiddleware;

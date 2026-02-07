@@ -2,13 +2,17 @@ const express = require('express');
 
 const app = express();
 
-const router = require('./routes/rotas');
+const adminRoutes = require('./routes/adminRoutes');
+
+const userRoutes = require('./routes/userRoutes');
 
 const errorMiddleware = require('./middlewares/errorMiddleware');
 
 app.use(express.json());
 
-app.use(router);
+app.use(adminRoutes);
+
+app.use(userRoutes);
 
 app.use(errorMiddleware);
 
