@@ -1,0 +1,163 @@
+openapi: 3.0.0
+info:
+  title: AUTH API - Admin
+  version: 1.0.0
+  description: Rotas administrativas (JWT + role admin).
+servers:
+  - url: http://localhost:3001
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+paths:
+  /admin/users:
+    get:
+      summary: Listar usuários (somente admin)
+      tags: [Admin]
+      security:
+        - bearerAuth: []
+      responses:
+        "200":
+          description: Lista de usuários
+        "401":
+          description: Token inválido ou ausente
+        "403":
+          description: Permissão de administrador necessária
+
+  /admin/users/{id}:
+    patch:
+      summary: Atualizar dados de um usuário por ID (admin)
+      tags: [Admin]
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+          example: 1
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: Neymar Jr
+                email:
+                  type: string
+                  example: neymar@gmail.com
+      responses:
+        "200":
+          description: Usuário atualizado
+        "400":
+          description: Dados inválidos
+        "401":
+          description: Token inválido ou ausente
+        "403":
+          description: Permissão de administrador necessária
+        "404":
+          description: Usuário não encontrado
+        "409":
+          description: E-mail já cadastrado
+
+    delete:
+      summary: Deletar usuário por ID (admin)
+      tags: [Admin]
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+          example: 2
+      responses:
+        "204":
+          description: Usuário deletado com sucesso
+        "401":
+          description: Token inválido ou ausente
+        "403":
+          description: Permissão de administrador necessária
+        "404":
+          description: Usuário não encontrado
+
+  /admin/users/{id}/role:
+    patch:
+      summary: Alterar role de um usuário por ID (admin)
+      tags: [Admin]
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+          example: 3
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [role]
+              properties:
+                role:
+                  type: string
+                  example: admin
+      responses:
+        "200":
+          description: Role atualizada com sucesso
+        "400":
+          description: Dados inválidos
+        "401":
+          description: Token inválido ou ausente
+        "403":
+          description: Permissão de administrador necessária
+        "404":
+          description: Usuário não encontrado
+
+  /admin/users/{id}/password:
+    patch:
+      summary: Alterar senha de um usuário por ID (admin)
+      tags: [Admin]
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+          example: 4
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [newPassword]
+              properties:
+                newPassword:
+                  type: string
+                  example: NovaSenha123
+      responses:
+        "204":
+          description: Senha alterada com sucesso
+        "400":
+          description: Dados inválidos
+        "401":
+          description: Token inválido ou ausente
+        "403":
+          description: Permissão de administrador necessária
+        "404":
+          description: Usuário não encontrado
