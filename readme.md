@@ -89,12 +89,15 @@ cd auth-api
 
 ### 2️⃣ Instalar as dependências
 
+```bash
 npm install
+```
 
 ### 3️⃣ Configurar variáveis de ambiente
 
 Crie um arquivo .env na raiz do projeto:
 
+```bash
 PORT=3000
 DB_HOST=localhost
 DB_USER=usuario
@@ -105,25 +108,34 @@ DB_DIALECT=mysql
 NODE_ENV=development
 JWT_SECRET=sua_chave_secreta
 JWT_EXPIRES_IN=h
+```
+
 
 ### 4️⃣ Executar as migrations
 
+```bash
 npx sequelize-cli db:migrate
+```
 
 ### 5️⃣ Iniciar a aplicação
 
+```bash
 npm run dev
-
+```
 ---
 
-A API estará disponível em:
+### A API estará disponível em:
 
+```bash
 http://localhost:3000
+```
 
-A documentação Swagger pode ser acessada em:
+### A documentação Swagger pode ser acessada em:
 
+```bash
 ADMIN - http://localhost:3000/admin-docs
 USER - http://localhost:3000/docs
+```
 
 ---
 
