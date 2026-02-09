@@ -37,6 +37,7 @@ diretamente para produção.
 
 ## 🗂️ Estrutura do Projeto
 
+```bash
 src/
 ├── controllers/ # Camada responsável pelas requisições HTTP
 ├── services/ # Regras de negócio da aplicação
@@ -46,7 +47,7 @@ src/
 ├── seeders/ # Criação de dados iniciais (ex: Admin)
 ├── middlewares/ # Autenticação, autorização e validações
 └── docs/ # Documentação Swagger
-
+```
 
 A estrutura segue o princípio de **separação de responsabilidades**,
 facilitando manutenção, testes e evolução do sistema.
@@ -159,7 +160,7 @@ USER - http://localhost:3000/docs
 
 ## 📡 Rotas / Endpoints
 
-## 👤 Usuários
+### 👤 Usuários
 
 | Método | Rota                | Descrição                              |
 | ------ | ------------------- | -------------------------------------- |
@@ -169,7 +170,7 @@ USER - http://localhost:3000/docs
 | PATCH  | `/auth/me`          | Atualizar dados do usuário autenticado |
 | PATCH  | `/auth/me/password` | Atualizar senha do usuário autenticado |
 
-## 🛠️ Administradores
+### 🛠️ Administradores
 
 | Método | Rota                  | Descrição                     |
 | ------ | --------------------- | ----------------------------- |
