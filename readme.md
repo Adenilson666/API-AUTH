@@ -43,7 +43,7 @@ src/
 ├── models/ # Definição das entidades do banco de dados
 ├── routes/ # Definição das rotas da API
 ├── migrations/ # Versionamento do banco de dados
-├── seeders/ # Criação do Admin
+├── seeders/ # Criação de dados iniciais (ex: Admin)
 ├── middlewares/ # Autenticação, autorização e validações
 └── docs/ # Documentação Swagger
 
@@ -76,18 +76,23 @@ Dependências de desenvolvimento
   "nodemon": "^3.1.11"
 }
 
-⚙️ Como Rodar o Projeto
+---
 
-1️⃣ Clonar o repositório
 
+```md
+## ⚙️ Como Rodar o Projeto
+
+### 1️⃣ Clonar o repositório
+
+```bash
 git clone https://github.com/adenilson666/auth-api.git
 cd auth-api
 
-2️⃣ Instalar as dependências
+### 2️⃣ Instalar as dependências
 
 npm install
 
-3️⃣ Configurar variáveis de ambiente
+### 3️⃣ Configurar variáveis de ambiente
 
 Crie um arquivo .env na raiz do projeto:
 
@@ -102,13 +107,15 @@ NODE_ENV=development
 JWT_SECRET=sua_chave_secreta
 JWT_EXPIRES_IN=h
 
-4️⃣ Executar as migrations
+### 4️⃣ Executar as migrations
 
 npx sequelize-cli db:migrate
 
-5️⃣ Iniciar a aplicação
+### 5️⃣ Iniciar a aplicação
 
 npm run dev
+
+---
 
 A API estará disponível em:
 
@@ -119,7 +126,9 @@ A documentação Swagger pode ser acessada em:
 ADMIN - http://localhost:3000/admin-docs
 USER - http://localhost:3000/docs
 
-🔐 Funcionalidades
+---
+
+## 🔐 Funcionalidades
 
 - Registro de usuários
 
@@ -135,9 +144,11 @@ USER - http://localhost:3000/docs
 
 - Rate limit para proteção contra abuso
 
-📡 Rotas / Endpoints
+---
 
-👤 Usuários
+## 📡 Rotas / Endpoints
+
+## 👤 Usuários
 
 | Método | Rota                | Descrição                              |
 | ------ | ------------------- | -------------------------------------- |
@@ -147,7 +158,7 @@ USER - http://localhost:3000/docs
 | PATCH  | `/auth/me`          | Atualizar dados do usuário autenticado |
 | PATCH  | `/auth/me/password` | Atualizar senha do usuário autenticado |
 
-🛠️ Administradores
+## 🛠️ Administradores
 
 | Método | Rota                  | Descrição                     |
 | ------ | --------------------- | ----------------------------- |
@@ -157,13 +168,17 @@ USER - http://localhost:3000/docs
 | PATCH  | `/admin/:id/role`     | Alterar role do usuário       |
 | PATCH  | `/admin/:id/password` | Alterar senha do usuário      |
 
-🚧 Próximos Passos
+---
+
+## 🚧 Próximos Passos
 
 - Implementação de testes automatizados
 
 - Deploy e configuração de ambiente
 
-📌 Observações
+---
+
+## 📌 Observações
 
 O projeto foi desenvolvido com foco em clareza de código,
 organização e aprendizado, utilizando migrations para
