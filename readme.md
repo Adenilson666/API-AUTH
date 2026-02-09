@@ -99,7 +99,7 @@ npm install
 Crie um arquivo .env na raiz do projeto:
 
 ```bash
-PORT=3000
+PORT=3001
 DB_HOST=localhost
 DB_USER=usuario
 DB_PASSWORD=senha
@@ -128,14 +128,14 @@ npm run dev
 ### A API estará disponível em:
 
 ```bash
-http://localhost:3000
+http://localhost:3001
 ```
 
 ### A documentação Swagger pode ser acessada em:
 
 ```bash
-ADMIN - http://localhost:3000/admin-docs
-USER - http://localhost:3000/docs
+ADMIN - http://localhost:3001/admin-docs
+USER - http://localhost:3001/docs
 ```
 
 ---
