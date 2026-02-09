@@ -70,19 +70,14 @@ facilitando manutenção, testes e evolução do sistema.
   "yamljs": "^0.3.0"
 }
 
-Dependências de desenvolvimento
-
 {
   "nodemon": "^3.1.11"
 }
 
 ```
 
-
 ---
 
-
-```md
 ## ⚙️ Como Rodar o Projeto
 
 ### 1️⃣ Clonar o repositório
@@ -90,6 +85,7 @@ Dependências de desenvolvimento
 ```bash
 git clone https://github.com/adenilson666/auth-api.git
 cd auth-api
+```
 
 ### 2️⃣ Instalar as dependências
 
